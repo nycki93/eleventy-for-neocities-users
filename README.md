@@ -9,6 +9,19 @@ Good news! There's a tool called [**Eleventy**](https://www.11ty.dev/) that does
 
 By the end of this tutorial, you will have two copies of your site: the "source" version with a mix of HTML and Markdown files, and the "release" version with just regular HTML. You will also be able to re-build the release files whenever you want by typing **just one command**: `npm run build`.
 
+<!-- TOC -->
+
+- [Installing Stuff](#installing-stuff)
+- [Creating a new Eleventy project](#creating-a-new-eleventy-project)
+- [Adding files to your site](#adding-files-to-your-site)
+- [Using Markdown](#using-markdown)
+- [Previewing your changes](#previewing-your-changes)
+- [Mixing Markdown with HTML](#mixing-markdown-with-html)
+- [Creating and using templates](#creating-and-using-templates)
+- [Useful commands](#useful-commands)
+
+<!-- /TOC -->
+
 ## Installing Stuff
 
 To get started, you will need:
