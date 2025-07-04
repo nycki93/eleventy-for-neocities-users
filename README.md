@@ -127,7 +127,7 @@ module.exports.config = {
 };
 ```
 
-Now, if you run the command `npm run build` in your text terminal, you'll see that all the files from *static* get copied into *_site*. Congratulations! You have a working Eleventy project! If you want to skip all this setup next time, you can just copy the files out of this very website (TODO: add download link).
+Now, if you run the command `npm run build` in your text terminal, you'll see that all the files from *static* get copied into *_site*. Congratulations! You have a working Eleventy project! If you want to skip all this setup next time, you can just copy the files out of this very repo, by clicking Code -> Download Zip in the top right.
 
 If you want to import an existing website, now is the time to **copy all your HTML files into the *static* folder**.
 
