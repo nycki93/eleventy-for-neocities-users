@@ -1,5 +1,8 @@
 # Eleventy for Neocities Users
 
+![before: text written in markdown](docs/before.png)
+![after: text styled with html](docs/after.png)
+
 Do you like writing HTML for your website on Neocities or Nekoweb, but get tired of manually writing lots of little tags like `<p>` and `<em>` and `<a href>` everywhere? Do you wish you could use Markdown on your site, just like we used to do on Cohost? 
 
 Good news! There's a tool called [**Eleventy**](https://www.11ty.dev/) that does exactly that. Eleventy is a **Static Site Generator**, which means that you write non-HTML code like `**this**`, and then compile, or "bake" it, into HTML code like `<strong>this</strong>` that you can copy to your website. I looked at several site generators on [Jamstack](https://jamstack.org/generators/), and I selected Eleventy for this tutorial because it gives you the most power for the least effort. It also runs the same everywhere, including Linux, Windows, and Mac, so I only have to write one tutorial.

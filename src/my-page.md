@@ -1,6 +1,3 @@
----
-layout: base.njk
-title: Welcome from Markdown!
----
+# Welcome from Markdown!
 
-It's like a <span style="color: blue; font-weight: bold">website</span> in here.
+It's like a *website* in here.
