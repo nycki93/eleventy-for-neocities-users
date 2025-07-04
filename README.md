@@ -249,6 +249,18 @@ It's like a <span style="color: blue; font-weight: bold">website</span> in here.
 
 That section at the top, between the two `---` lines, is called **front matter**, and it means "this isn't part of the page, it's data for the template engine." In this case, *layout* tells Eleventy which template to use, and *title* tells Nunjucks what to put in the `{{ title }}` section. Nunjucks will also take any Markdown or HTML on your page and insert it into the `{{ content | safe }}` section. [^2]
 
-And that's all I have to teach you! If you have any other ideas like "dang, I wish every time I built my website, I could automatically do something else..." then, yes, there's probably a script for that! You can read all about it on [11ty.dev](https://www.11ty.dev/). They also have a friendly Discord chat if you want to ask a person for help. Or you can email me at <nupanick@gmail.com>. I love this stuff! 🧡
-
 [^2]: The word "safe" is here to tell Nunjucks "hey, if I type `<a>` in this file, that's a link, not literally the letter 'a' between two angle brackets, okay? You don't have to fix it for me, it's safe." Try removing the "safe" part and see what happens!
+
+## Useful commands
+
+To add plain old HTML you've written before: copy it into *static*.
+
+To use Markdown in a file: put it in *src*.
+
+To preview your site: `npm run serve`.
+
+To **completely rebuild** your site: delete *_site* and run `npm run build` to re-create it.
+
+When you're satisfied with your changes: copy all the files from *_site* to your Neocities.
+
+And that's all I have to teach you! If you have any other ideas like "dang, I wish every time I built my website, I could automatically do something else..." then, yes, there's probably a script for that! You can read all about it on [11ty.dev](https://www.11ty.dev/). They also have a friendly Discord chat if you want to ask a person for help. Or you can email me at <nupanick@gmail.com>. I love this stuff! 🧡
