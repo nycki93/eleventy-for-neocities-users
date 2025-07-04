@@ -106,7 +106,7 @@ If you want, you can type `npm run build` in your text terminal to run that scri
 
 ## Adding files to your site
 
-Create two empty folders inside the project called *src* and *static*, and create a file inside there named *index.html*. So if your project folder is *example.com*, this will be *example.com/static/index.html*. Type whatever you want inside this file. For example:
+Create two empty folders inside the project called *src* and *static*, and create a file inside *static* named *index.html*. So if your project folder is *example.com*, this will be *example.com/static/index.html*. Type whatever you want inside this file. For example:
 
 ```html
 <h1>Hello from HTML!</h1>
