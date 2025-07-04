@@ -1,7 +1,6 @@
 # Eleventy for Neocities Users
 
-![before: text written in markdown](docs/before.png)
-![after: text styled with html](docs/after.png)
+![before and after showing markdown converted to html](docs/before-after.png)
 
 Do you like writing HTML for your website on [Neocities](https://neocities.org/) or [Nekoweb](https://nekoweb.org/), but get tired of manually writing lots of little tags like `<p>` and `<em>` and `<a href>` everywhere? Do you wish you could use Markdown on your site, just like we used to do on [Cohost](https://en.wikipedia.org/wiki/Cohost)? 
 
