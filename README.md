@@ -75,9 +75,9 @@ Make sure to add a comma between the test script and the build script. The file 
 
 ```json
 {
-  "name": "11ty-for-neocities-users",
+  "name": "eleventy-for-neocities-users",
   "version": "1.0.0",
-  "description": "## Step 1: Create a new Eleventy project",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
