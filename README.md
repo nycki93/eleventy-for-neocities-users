@@ -135,7 +135,7 @@ Earlier we created the *src* folder but we haven't used it at all. The *src* fol
 ```md
 # Welcome from Markdown!
 
-It's *stylish* in here.
+It's like a *website* in here.
 ```
 
 Since we set up the build script earlier, you can run that right now! Type `npm run build` in your text terminal, and check the output in *_site*. You should see a file called *_site/my-page/index.html* that looks like this:
@@ -167,12 +167,85 @@ While the preview server is running, you can keep working on your website. It wi
 
 When you want to stop the preview server, hold Ctrl and press C. In this case, Ctrl-C stands for "cancel" instead of "copy".
 
-<!-- ## Step 2: Add Markdown to a page
+## Mixing Markdown with HTML
 
-- Create a new page.md file and generate page/index.html
-- Add custom styles with CSS
+That markdown page is convenient but it's pretty bland. How do we get our cool style sheet into it? The first and simplest way is to *mix Markdown with HTML.* If you don't have a stylesheet yet, here's a simple one I like to use. Copy this text into *static/style.css*.
 
-## Step 3: Create a reusable page layout
+```css
+body {
+    max-width: 100rem;
+    padding: 0 1rem;
+    margin: 0 auto 2rem;
+    font-family: sans-serif;
+}
+```
 
-- Create a new base.njk layout
-- Import the layout from page.md -->
+Now, we'll edit *my-page.md* to use this stylesheet. Edit *my-page.md* so it looks like this:
+
+```md
+<link rel="stylesheet" href="/style.css">
+
+# Welcome from Markdown!
+
+It's like a *website* in here.
+```
+
+Re-build the page with `npm run build`, or preview it with `npm run serve`. Hey, presto! No more default font! You can mix HTML and Markdown as much as you like. Are you a fan of inline CSS? Give it a shot!
+
+```md
+<link rel="stylesheet" href="/style.css">
+
+# Welcome from Markdown!
+
+It's like a <span style="color: blue; font-weight: bold">website</span> in here.
+```
+
+At this point, if you just want to use Markdown on your website, **you're done!** However, you might be thinking "hmm, it sure would be nice to avoid having to re-write that `<link rel="stylesheet">` stuff on every page..." If that sounds like you, read on.
+
+## Creating and using templates
+
+One of the most powerful features of Eleventy is the ability to create re-usable templates with Nunjucks. A **template** is just a fill-in-the-blanks file that you can use when generating HTML. For instance, you probably want every page to have a `<head>` section with that `<link rel="stylesheet">` tag in it, and maybe you want to add some links to the top of the page for navigation? Here's a quick guide on that, to get you started.
+
+Earlier, when I had you copy my *eleventy.config.js* file, you might have been wondering "what the heck is `markdownTemplateEngine: 'njk'`? That `njk` is short for Nunjucks, a template engine included with Eleventy by default. There are several different flavors of templates, but Nunjucks seems to be the most popular, so that's the one I'm using here!
+
+Create the file *src/_includes/base.njk* and copy the following code into it:
+
+```njk
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="{{ eleventy.generator }}">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">home</a>
+    </nav>
+
+    <main>
+        <h1>{{ title }}</h1>
+        {{ content | safe }}
+    </main>
+</body>
+</html>
+```
+
+Anywhere in this file you see double curly braces, like `{{ title }}`, that's a fill-in-the-blank that will be used by our Markdown. Go back to *my-page.md* and edit it like this:
+
+```md
+---
+layout: base.njk
+title: Welcome from Markdown!
+---
+
+It's like a <span style="color: blue; font-weight: bold">website</span> in here.
+```
+
+That section at the top, between the two `---` lines, is called **front matter**, and it means "this isn't part of the page, it's data for the template engine." In this case, *layout* tells Eleventy which template to use, and *title* tells Nunjucks what to put in the `{{ title }}` section. Nunjucks will also take any Markdown or HTML on your page and insert it into the `{{ content | safe }}` section. [^2]
+
+And that's all I have to teach you! If you have any other ideas like "dang, I wish every time I built my website, I could automatically do something else..." then, yes, there's probably a script for that! You can read all about it on [11ty.dev](https://www.11ty.dev/). They also have a friendly Discord chat if you want to ask a person for help. Or you can email me at <nupanick@gmail.com>. I love this stuff! 🧡
+
+[^2]: The word "safe" is here to tell Nunjucks "hey, if I type `<a>` in this file, that's a link, not literally the letter 'a' between two angle brackets, okay? You don't have to fix it for me, it's safe." Try removing the "safe" part and see what happens!
