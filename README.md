@@ -65,10 +65,14 @@ Open up *package.json* in your text editor. You should see that it contains some
 }
 ```
 
-This is a **json** file, which is a type of config file used by most JavaScript programs. It has one *script* defined already, a "test" script that does nothing. Let's add a new script that starts Eleventy:
+This is a **json** file, which is a type of config file used by most JavaScript programs. It has one *script* defined already, a "test" script that does nothing. Let's add two new scripts: one to build the website, and one to preview it.
 
 ```json
-"build": "eleventy"
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "eleventy",
+  "serve": "eleventy --serve"
+},
 ```
 
 Make sure to add a comma between the test script and the build script. The file should now look like this:
@@ -81,7 +85,8 @@ Make sure to add a comma between the test script and the build script. The file 
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eleventy"
+    "build": "eleventy",
+    "serve": "eleventy --serve"
   },
   "keywords": [],
   "author": "",
@@ -101,24 +106,66 @@ If you want, you can type `npm run build` in your text terminal to run that scri
 Create two empty folders inside the project called *src* and *static*, and create a file inside there named *index.html*. So if your project folder is *example.com*, this will be *example.com/static/index.html*. Type whatever you want inside this file. For example:
 
 ```html
-<!-- index.html -->
 <h1>Hello from HTML!</h1>
 ```
 
 We'll tell Eleventy to copy this file into your website.
 
-Create a new file in the project called *eleventy.config.js*. So, if your project folder is *example.com*, this is *example.com/eleventy.config.js*. Copy this code into that file:
+Create a new file in the project called *eleventy.config.js*. So, if your project folder is *example.com*, this is *example.com/eleventy.config.js*. Copy this code into that file. You don't need to understand all these settings right now, but if you're curious, there is a [full list of options](https://www.11ty.dev/docs/config/) on Eleventy's website.
 
 ```js
 module.exports = function(eleventyConfig) {
     eleventyConfig.setInputDirectory('src');
     eleventyConfig.addPassthroughCopy({ 'static': '/' });
 };
+
+module.exports.config = {
+    markdownTemplateEngine: 'njk',
+};
 ```
 
 Now, if you run the command `npm run build` in your text terminal, you'll see that all the files from *static* get copied into *_site*. Congratulations! You have a working Eleventy project! If you want to skip all this setup next time, you can just copy the files out of this very website (TODO: add download link).
 
 If you want to import an existing website, now is the time to **copy all your HTML files into the *static* folder**.
+
+## Using Markdown
+
+Earlier we created the *src* folder but we haven't used it at all. The *src* folder is where we put "source files", which are anything that needs to be baked (or "compiled") into HTML before we can copy it to our website. Let's write a Markdown source file now. Create the file *src/my-page.md* with the following code:
+
+```md
+# Welcome from Markdown!
+
+It's *stylish* in here.
+```
+
+Since we set up the build script earlier, you can run that right now! Type `npm run build` in your text terminal, and check the output in *_site*. You should see a file called *_site/my-page/index.html* that looks like this:
+
+```html
+<h1>Welcome from Markdown!</h1>
+<p>It's <em>stylish</em> in here.</p>
+```
+
+And bam, we have Markdown to HTML conversion working! You could upload the *_site* folder to Neocities right now if you want! 
+
+## Previewing your changes
+
+Before we do anything else, you might want to preview your site. You can do that with the other script we set up: `npm run serve`. Type that command in your text terminal, and you should see some output like this:
+
+```txt
+> eleventy-for-neocities-users@1.0.0 serve
+> eleventy --serve
+
+[11ty] Writing ./_site/my-page/index.html from ./src/my-page.md (njk)
+[11ty] Copied 1 Wrote 1 file in 0.13 seconds (v3.1.2)
+[11ty] Watching…
+[11ty] Server at http://localhost:8080/
+```
+
+Go ahead and open a web browser like Chrome or Firefox, and type in that address, <http://localhost:8080/>, and you should see a preview of your website! You can even go to <http://localhost:8080/my-page/> to see the new page we just created.
+
+While the preview server is running, you can keep working on your website. It will **automatically re-build whenever you save a file.**
+
+When you want to stop the preview server, hold Ctrl and press C. In this case, Ctrl-C stands for "cancel" instead of "copy".
 
 <!-- ## Step 2: Add Markdown to a page
 
