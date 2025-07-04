@@ -145,7 +145,7 @@ Since we set up the build script earlier, you can run that right now! Type `npm 
 
 ```html
 <h1>Welcome from Markdown!</h1>
-<p>It's <em>stylish</em> in here.</p>
+<p>It's like a <em>website</em> in here.</p>
 ```
 
 And bam, we have Markdown to HTML conversion working! You could upload the *_site* folder to Neocities right now if you want! 
