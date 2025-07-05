@@ -265,7 +265,7 @@ That section at the top, between the two `---` lines, is called **front matter**
 
 ## Useful commands
 
-To add plain old HTML you've written before: copy it into *static*.
+To add plain HTML or static files like images: copy it into *static*.
 
 To use Markdown in a file: put it in *src*.
 
